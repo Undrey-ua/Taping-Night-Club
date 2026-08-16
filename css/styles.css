@@ -780,8 +780,11 @@ blockquote {
   inset: 0;
   z-index: 80;
   display: grid;
-  place-items: center;
-  padding: 24px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  justify-items: center;
+  gap: 12px;
+  padding: 24px 16px;
   background: rgba(15, 12, 10, 0.88);
 }
 
@@ -789,11 +792,61 @@ blockquote {
   display: none;
 }
 
+.lightbox-stage {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  max-width: min(520px, 100%);
+}
+
 .lightbox img {
-  max-width: min(420px, 100%);
-  max-height: calc(100svh - 48px);
+  max-width: 100%;
+  max-height: calc(100svh - 88px);
   border-radius: 20px;
   object-fit: contain;
+  touch-action: pan-y;
+}
+
+.lightbox-count {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lightbox-nav {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+}
+
+.lightbox-nav::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 0 auto;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.lightbox-nav.is-prev::before {
+  transform: rotate(135deg);
+  margin-left: 14px;
+}
+
+.lightbox-nav.is-next::before {
+  transform: rotate(-45deg);
+  margin-right: 14px;
+}
+
+.lightbox-nav:hover,
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .lightbox-close {
@@ -942,6 +995,22 @@ body.is-locked {
     width: 100%;
     margin-inline: auto;
     text-align: left;
+  }
+
+  .lightbox {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    gap: 16px;
+    padding: 72px 16px 24px;
+  }
+
+  .lightbox-stage {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .lightbox-nav {
+    grid-row: 2;
   }
 
   .courses-grid[data-count="1"] .course-card {

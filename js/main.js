@@ -127,16 +127,36 @@
       image.loading = "lazy";
       button.appendChild(image);
 
-      button.addEventListener("click", () => openLightbox(item));
+      button.addEventListener("click", () => openLightbox(index));
       reviewsGrid.appendChild(button);
     });
   }
 
-  const openLightbox = (item) => {
+  let reviewIndex = 0;
+  const lightboxImage = lightbox?.querySelector("img");
+  const lightboxCount = lightbox?.querySelector("[data-lightbox-count]");
+
+  const showReview = (index) => {
+    if (!reviews.length || !lightboxImage) return;
+    reviewIndex = (index + reviews.length) % reviews.length;
+    const item = reviews[reviewIndex];
+    lightboxImage.src = item.src;
+    lightboxImage.alt = item.alt || "Відгук";
+    if (lightboxCount) {
+      lightboxCount.textContent = `${reviewIndex + 1} / ${reviews.length}`;
+    }
+    const next = reviews[(reviewIndex + 1) % reviews.length];
+    const prev = reviews[(reviewIndex - 1 + reviews.length) % reviews.length];
+    [next, prev].forEach((entry) => {
+      if (!entry?.src) return;
+      const preload = new Image();
+      preload.src = entry.src;
+    });
+  };
+
+  const openLightbox = (index) => {
     if (!lightbox) return;
-    const image = lightbox.querySelector("img");
-    image.src = item.src;
-    image.alt = item.alt || "Відгук";
+    showReview(index);
     lightbox.hidden = false;
     document.body.classList.add("is-locked");
   };
@@ -144,9 +164,24 @@
   const closeLightbox = () => {
     if (!lightbox) return;
     lightbox.hidden = true;
-    lightbox.querySelector("img").src = "";
+    if (lightboxImage) lightboxImage.src = "";
     document.body.classList.remove("is-locked");
   };
+
+  const stepReview = (delta) => {
+    if (lightbox?.hidden) return;
+    showReview(reviewIndex + delta);
+  };
+
+  lightbox?.querySelector("[data-lightbox-prev]")?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    stepReview(-1);
+  });
+
+  lightbox?.querySelector("[data-lightbox-next]")?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    stepReview(1);
+  });
 
   lightbox?.addEventListener("click", (event) => {
     if (event.target === lightbox || event.target.closest("[data-lightbox-close]")) {
@@ -155,8 +190,29 @@
   });
 
   document.addEventListener("keydown", (event) => {
+    if (lightbox?.hidden) return;
     if (event.key === "Escape") closeLightbox();
+    if (event.key === "ArrowLeft") stepReview(-1);
+    if (event.key === "ArrowRight") stepReview(1);
   });
+
+  let touchStartX = 0;
+  lightbox?.addEventListener(
+    "touchstart",
+    (event) => {
+      touchStartX = event.changedTouches[0].clientX;
+    },
+    { passive: true }
+  );
+  lightbox?.addEventListener(
+    "touchend",
+    (event) => {
+      const delta = event.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(delta) < 40) return;
+      stepReview(delta < 0 ? 1 : -1);
+    },
+    { passive: true }
+  );
 
   const media = Array.isArray(config.media) ? config.media : [];
   const gallerySection = document.getElementById("gallery");

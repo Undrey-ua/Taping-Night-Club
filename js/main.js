@@ -60,43 +60,51 @@
       card.className = "course-card";
       if (course.featured) card.classList.add("is-featured");
 
+      const info = document.createElement("div");
+      info.className = "course-info";
+
       if (course.badge) {
         const badge = document.createElement("p");
-        badge.className = "badge badge-dark";
+        badge.className = "badge badge-gift";
         badge.textContent = course.badge;
-        card.appendChild(badge);
+        info.appendChild(badge);
       }
 
       const title = document.createElement("h3");
       title.textContent = course.title || "Курс";
-      card.appendChild(title);
+      info.appendChild(title);
 
       if (course.description) {
         const text = document.createElement("p");
         text.className = "course-copy";
         text.textContent = course.description;
-        card.appendChild(text);
+        info.appendChild(text);
       }
+
+      const offer = document.createElement("div");
+      offer.className = "course-offer";
 
       if (course.price) {
         const price = document.createElement("p");
         price.className = "course-price";
         price.textContent = course.price;
-        card.appendChild(price);
+        offer.appendChild(price);
       }
 
       const pay = document.createElement("a");
-      pay.className = "btn btn-dark";
+      pay.className = "btn";
       pay.rel = "noopener noreferrer";
       pay.textContent = course.cta || "Оплатити";
       bindPay(pay, course.payUrl);
-      card.appendChild(pay);
+      offer.appendChild(pay);
 
       const hint = document.createElement("p");
       hint.className = "pay-hint";
       hint.textContent = "Оплата через WayForPay";
-      card.appendChild(hint);
+      offer.appendChild(hint);
 
+      card.appendChild(info);
+      card.appendChild(offer);
       coursesGrid.appendChild(card);
     });
   }

@@ -592,21 +592,56 @@ blockquote {
 }
 
 .aftercare {
-  margin-top: 12px;
-  padding: 32px;
-  border-radius: var(--radius-sm);
-  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  padding: 36px 36px 40px;
+  border: 1px solid rgba(231, 160, 122, 0.5);
+  border-radius: 28px;
+  background:
+    radial-gradient(520px 220px at 0% 0%, rgba(231, 160, 122, 0.28), transparent 60%),
+    var(--ink);
   color: var(--text);
+  box-shadow: 0 18px 40px rgba(22, 17, 14, 0.1);
 }
 
-.aftercare .badge-dark {
-  border-color: var(--line);
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--accent-2);
+.aftercare-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
-.aftercare p {
-  margin: 8px 0 0;
+.aftercare-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.aftercare-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.badge-gift {
+  margin: 0;
+  border: 0;
+  background: var(--accent);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.aftercare h3 {
+  margin: 0 0 12px;
+}
+
+.aftercare > p {
+  margin: 0;
   max-width: 46em;
   color: var(--text-soft);
 }
@@ -646,7 +681,7 @@ blockquote {
 .courses-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 16px;
 }
 
 .courses-grid[data-count="1"] {
@@ -654,48 +689,66 @@ blockquote {
 }
 
 .course-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 32px 28px;
-  border-radius: var(--radius);
+  display: grid;
+  gap: 28px;
+  padding: 28px;
+  border: 1px solid rgba(22, 17, 14, 0.06);
+  border-radius: 28px;
   background: #fff;
-}
-
-.course-card.is-featured {
-  box-shadow: 0 18px 40px rgba(22, 17, 14, 0.08);
+  box-shadow: 0 18px 50px rgba(22, 17, 14, 0.06);
 }
 
 .courses-grid[data-count="1"] .course-card {
+  grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
-  text-align: center;
-  padding: 56px 32px;
-  background:
-    radial-gradient(800px 280px at 50% 0%, rgba(231, 160, 122, 0.28), transparent 60%),
-    #fff;
+  padding: 12px 12px 12px 40px;
+}
+
+.course-info .badge {
+  margin-bottom: 16px;
 }
 
 .course-card h3 {
-  max-width: 16ch;
-  font-size: clamp(28px, 4vw, 42px);
-}
-
-.courses-grid[data-count="1"] .course-card h3 {
-  margin-inline: auto;
+  max-width: 14ch;
+  margin: 0 0 12px;
+  font-size: clamp(28px, 4vw, 44px);
 }
 
 .course-copy {
-  margin: 0 0 8px;
+  margin: 0;
   max-width: 34em;
   color: var(--muted);
 }
 
+.course-offer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  padding: 28px 24px;
+  border-radius: 22px;
+  background:
+    radial-gradient(280px 120px at 50% 0%, rgba(231, 160, 122, 0.35), transparent 70%),
+    #1a1410;
+  text-align: center;
+}
+
 .course-price {
-  margin: 8px 0 22px;
+  margin: 0 0 8px;
   font-family: var(--serif);
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(40px, 5vw, 56px);
   font-weight: 500;
   letter-spacing: -0.05em;
+  color: var(--accent-2);
+}
+
+.course-offer .btn {
+  width: 100%;
+}
+
+.course-offer .pay-hint {
+  margin: 6px 0 0;
+  color: rgba(244, 235, 227, 0.62);
 }
 
 .reviews-grid {
@@ -889,6 +942,15 @@ body.is-locked {
     width: 100%;
     margin-inline: auto;
     text-align: left;
+  }
+
+  .courses-grid[data-count="1"] .course-card {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .course-card h3 {
+    max-width: none;
   }
 
   .split,

@@ -39,7 +39,22 @@
           <a href="#about">Про клуб</a>
           <a href="#tape">Тейп</a>
           <a href="#process">Формат</a>
-          <a href="#pay" class="btn btn-sm">Приєднатися</a>
+          <a href="#reviews" data-nav-reviews hidden>Відгуки</a>
+          <a href="https://www.instagram.com/yanina.vov" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8" />
+              <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8" />
+              <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
+            </svg>
+            Instagram
+          </a>
+          <a href="https://t.me/yanina_vov" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M20.7 4.3 3.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.3 1.3 1.7 5.1c.2.6.1.8.8.8.4 0 .6-.2.8-.4l2.4-2.3 4.6 3.4c.8.5 1.4.2 1.6-.8l2.9-13.6c.3-1.2-.4-1.8-1.3-1.4Zm-13.2 8.7 9.6-6.1c.5-.3.9 0 .6.3l-7.8 7.1-.3 3.3-2.1-4.6Z" />
+            </svg>
+            Telegram
+          </a>
+          <a href="#courses" class="btn btn-sm" data-featured-cta>Приєднатися</a>
         </nav>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Меню" data-nav-toggle>
           <span class="nav-toggle-bar"></span>
@@ -57,7 +72,7 @@
             30 днів, щоб навчитися працювати зі своїм обличчям за допомогою тейпування
           </p>
           <div class="hero-actions">
-            <a class="btn" href="#pay">Приєднатися · 550 грн</a>
+            <a class="btn" href="#courses" data-featured-cta>Приєднатися · 550 грн</a>
             <a class="btn btn-ghost" href="#about">Як це працює</a>
           </div>
           <div class="hero-meta">
@@ -240,35 +255,55 @@
         </div>
       </section>
 
-      <section class="section pay" id="pay">
-        <div class="pay-card" data-reveal>
-          <p class="badge badge-dark">Участь</p>
-          <h2>Приєднатися до вечірнього клубу</h2>
-          <p class="pay-price">550 грн</p>
-          <p class="pay-lead">
-            30 днів системної роботи з обличчям, шиєю та декольте — і ще 2 тижні доступу до матеріалів після завершення.
-          </p>
-          <div class="pay-slot" id="pay-slot">
-            <div id="wayforpay-embed"></div>
-            <a
-              class="btn btn-dark"
-              data-pay
-              href="https://secure.wayforpay.com/button/be814dabdf12f"
-              rel="noopener noreferrer"
-            >Оплатити участь</a>
+      <section class="section section-cream" id="reviews" hidden>
+        <div class="container" data-reveal>
+          <div class="section-head">
+            <p class="badge badge-dark">Відгуки</p>
+            <h2>Що пишуть дівчата</h2>
+            <p class="lead">Скріни з Instagram і Telegram — живі враження після практики.</p>
           </div>
-          <p class="pay-hint">Оплата через WayForPay</p>
+          <div class="reviews-grid" id="reviews-grid"></div>
+        </div>
+      </section>
+
+      <section class="section section-cream" id="courses">
+        <div class="container" data-reveal>
+          <div class="section-head section-head-center">
+            <p class="badge badge-dark">Курси</p>
+            <h2>Обрати програму</h2>
+          </div>
+          <div class="courses-grid" id="courses-grid" data-count="1"></div>
         </div>
       </section>
     </main>
 
     <footer class="footer">
       <span>Вечірній клуб з тейпування</span>
-      <span>Kinesio taping</span>
+      <div class="footer-contacts">
+        <a href="https://www.instagram.com/yanina.vov" target="_blank" rel="noopener noreferrer">
+          <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8" />
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8" />
+            <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
+          </svg>
+          Instagram
+        </a>
+        <a href="https://t.me/yanina_vov" target="_blank" rel="noopener noreferrer">
+          <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M20.7 4.3 3.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.3 1.3 1.7 5.1c.2.6.1.8.8.8.4 0 .6-.2.8-.4l2.4-2.3 4.6 3.4c.8.5 1.4.2 1.6-.8l2.9-13.6c.3-1.2-.4-1.8-1.3-1.4Zm-13.2 8.7 9.6-6.1c.5-.3.9 0 .6.3l-7.8 7.1-.3 3.3-2.1-4.6Z" />
+          </svg>
+          Telegram
+        </a>
+      </div>
     </footer>
 
     <div class="sticky-cta">
-      <a class="btn" href="#pay">Приєднатися · 550 грн</a>
+      <a class="btn" href="#courses" data-featured-cta>Приєднатися · 550 грн</a>
+    </div>
+
+    <div class="lightbox" id="lightbox" hidden>
+      <button class="lightbox-close" type="button" aria-label="Закрити" data-lightbox-close></button>
+      <img alt="" />
     </div>
 
     <script src="js/config.js"></script>

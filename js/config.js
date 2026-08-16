@@ -34,8 +34,18 @@ window.CLUB_CONFIG = {
    * source: "instagram" | "telegram"
    */
   reviews: [
-    // { src: "assets/reviews/instagram-1.jpg", alt: "Відгук в Instagram", source: "instagram" },
-    // { src: "assets/reviews/telegram-1.jpg", alt: "Відгук в Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0978.jpeg", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0979.png", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0980.jpeg", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0981.jpeg", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0982.png", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0983.jpeg", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0984.jpeg", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0985.png", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0986.jpeg", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0987.png", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0988.jpeg", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_0989.jpeg", alt: "Відгук у Telegram", source: "telegram" },
   ],
 
   /**

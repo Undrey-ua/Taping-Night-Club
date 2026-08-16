@@ -718,29 +718,8 @@ blockquote {
 
 .review-card img {
   width: 100%;
-  aspect-ratio: 9 / 16;
-  object-fit: cover;
-  object-position: top;
-}
-
-.review-source {
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(15, 12, 10, 0.72);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.review-source.is-instagram {
-  background: linear-gradient(135deg, #f58529, #dd2a7b 55%, #8134af);
-}
-
-.review-source.is-telegram {
-  background: #2aabee;
+  height: auto;
+  display: block;
 }
 
 .lightbox {

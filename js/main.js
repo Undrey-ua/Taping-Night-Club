@@ -101,11 +101,6 @@
     });
   }
 
-  const sourceLabel = {
-    instagram: "Instagram",
-    telegram: "Telegram",
-  };
-
   const reviews = Array.isArray(config.reviews) ? config.reviews : [];
 
   if (reviews.length && reviewsGrid && reviewsSection) {
@@ -123,11 +118,6 @@
       image.alt = item.alt || "Відгук";
       image.loading = "lazy";
       button.appendChild(image);
-
-      const source = document.createElement("span");
-      source.className = `review-source is-${item.source || "social"}`;
-      source.textContent = sourceLabel[item.source] || "Відгук";
-      button.appendChild(source);
 
       button.addEventListener("click", () => openLightbox(item));
       reviewsGrid.appendChild(button);

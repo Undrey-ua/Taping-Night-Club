@@ -37,12 +37,4 @@ window.CLUB_CONFIG = {
     { src: "assets/reviews/IMG_1400.jpg", alt: "Відгук учасниці клубу" },
     { src: "assets/reviews/IMG_1401.jpg", alt: "Відгук учасниці клубу" },
   ],
-
-  media: [
-    {
-      type: "image",
-      src: "assets/intake/hero-collage.jpg",
-      alt: "30 днів тейпування та +15 днів доступу",
-    },
-  ],
 };

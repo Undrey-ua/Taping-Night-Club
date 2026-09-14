@@ -14,8 +14,20 @@
     header.classList.toggle("is-scrolled", window.scrollY > 12);
   };
 
+  const sticky = document.querySelector(".sticky-cta");
+  const hero = document.querySelector(".hero");
+  const updateSticky = () => {
+    if (!sticky || !hero) return;
+    const compact = window.matchMedia("(max-width: 900px)").matches;
+    const show = compact && window.scrollY > Math.min(hero.offsetHeight * 0.55, 480);
+    sticky.toggleAttribute("hidden", !show);
+  };
+
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("scroll", updateSticky, { passive: true });
+  window.addEventListener("resize", updateSticky);
   onScroll();
+  updateSticky();
 
   if (toggle) {
     toggle.addEventListener("click", () => {
@@ -81,6 +93,17 @@
         info.appendChild(text);
       }
 
+      if (Array.isArray(course.includes) && course.includes.length) {
+        const list = document.createElement("ul");
+        list.className = "course-includes";
+        course.includes.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          list.appendChild(li);
+        });
+        info.appendChild(list);
+      }
+
       const offer = document.createElement("div");
       offer.className = "course-offer";
 
@@ -102,6 +125,16 @@
       hint.className = "pay-hint";
       hint.textContent = "Оплата через WayForPay";
       offer.appendChild(hint);
+
+      if (course.telegramUrl) {
+        const telegram = document.createElement("a");
+        telegram.className = "btn btn-ghost";
+        telegram.href = course.telegramUrl;
+        telegram.target = "_blank";
+        telegram.rel = "noopener noreferrer";
+        telegram.textContent = course.telegramCta || "Написати в Telegram";
+        offer.appendChild(telegram);
+      }
 
       card.appendChild(info);
       card.appendChild(offer);

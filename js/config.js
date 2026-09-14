@@ -1,58 +1,48 @@
 window.CLUB_CONFIG = {
-  /**
-   * Курси з окремою ціною і кнопкою WayForPay.
-   * Щоб додати курс — скопіюйте об’єкт нижче і вставте посилання на інвойс.
-   */
   courses: [
     {
       id: "evening-club",
-      title: "Вечірній клуб з тейпування",
-      badge: "30 днів",
+      title: "Вечірній клуб тейпування",
+      badge: "Старт 20 вересня",
       description:
-        "30 днів системної роботи з обличчям, шиєю та декольте — і ще 2 тижні доступу до матеріалів після завершення.",
+        "30 днів участі + 15 додаткових днів доступу до матеріалів та записів. Після оплати напишіть Яніні в Telegram — вона додасть вас до закритого клубу.",
       price: "550 грн",
       payUrl: "https://secure.wayforpay.com/button/be814dabdf12f",
       cta: "Оплатити участь",
+      telegramUrl: "https://t.me/yanina_vov",
+      telegramCta: "Написати Яніні в Telegram",
       featured: true,
+      includes: [
+        "онлайн-зустрічі о 21:00",
+        "записи ефірів",
+        "відеоінструкції",
+        "тейпування обличчя та тіла",
+        "перевірка техніки",
+        "закритий Telegram-клуб",
+        "супровід протягом місяця",
+        "вигідна ціна на тейпи",
+      ],
     },
-    // {
-    //   id: "course-2",
-    //   title: "Назва курсу",
-    //   badge: "Онлайн",
-    //   description: "Короткий опис програми.",
-    //   price: "1200 грн",
-    //   payUrl: "https://secure.wayforpay.com/button/xxxxxxxx",
-    //   cta: "Оплатити курс",
-    // },
   ],
 
-  /**
-   * Відгуки — скріни з Instagram і Telegram.
-   * 1. Покладіть файли в assets/reviews/
-   * 2. Додайте їх у масив нижче.
-   *
-   * source: "instagram" | "telegram"
-   */
   reviews: [
-    { src: "assets/reviews/IMG_0978.jpeg", alt: "Відгук у Telegram", source: "telegram" },
-    { src: "assets/reviews/IMG_0979.png", alt: "Відгук у Telegram", source: "telegram" },
-    { src: "assets/reviews/IMG_0980.jpeg", alt: "Відгук у Telegram", source: "telegram" },
-    { src: "assets/reviews/IMG_0981.jpeg", alt: "Відгук у Telegram", source: "telegram" },
-    { src: "assets/reviews/IMG_0982.png", alt: "Відгук у Telegram", source: "telegram" },
-    { src: "assets/reviews/IMG_0983.jpeg", alt: "Відгук у Telegram", source: "telegram" },
-    { src: "assets/reviews/IMG_0984.jpeg", alt: "Відгук у Telegram", source: "telegram" },
-    { src: "assets/reviews/IMG_0985.png", alt: "Відгук у Telegram", source: "telegram" },
-    { src: "assets/reviews/IMG_0986.jpeg", alt: "Відгук у Telegram", source: "telegram" },
-    { src: "assets/reviews/IMG_0987.png", alt: "Відгук у Telegram", source: "telegram" },
-    { src: "assets/reviews/IMG_0988.jpeg", alt: "Відгук у Telegram", source: "telegram" },
-    { src: "assets/reviews/IMG_0989.jpeg", alt: "Відгук у Telegram", source: "telegram" },
+    { src: "assets/reviews/IMG_1392.jpg", alt: "Відгук учасниці клубу" },
+    { src: "assets/reviews/IMG_1393.jpg", alt: "Відгук учасниці клубу" },
+    { src: "assets/reviews/IMG_1394.jpg", alt: "Відгук учасниці клубу" },
+    { src: "assets/reviews/IMG_1395.jpg", alt: "Відгук учасниці клубу" },
+    { src: "assets/reviews/IMG_1396.jpg", alt: "Відгук учасниці клубу" },
+    { src: "assets/reviews/IMG_1397.jpg", alt: "Відгук учасниці клубу" },
+    { src: "assets/reviews/IMG_1398.jpg", alt: "Відгук учасниці клубу" },
+    { src: "assets/reviews/IMG_1399.jpg", alt: "Відгук учасниці клубу" },
+    { src: "assets/reviews/IMG_1400.jpg", alt: "Відгук учасниці клубу" },
+    { src: "assets/reviews/IMG_1401.jpg", alt: "Відгук учасниці клубу" },
   ],
 
-  /**
-   * Фото і відео для галереї практики.
-   * Файли — у assets/media/
-   */
   media: [
-    // { type: "image", src: "assets/media/photo-1.jpg", alt: "Робота з овалом", caption: "Овал" },
+    {
+      type: "image",
+      src: "assets/intake/hero-collage.jpg",
+      alt: "30 днів тейпування та +15 днів доступу",
+    },
   ],
 };

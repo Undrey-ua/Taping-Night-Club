@@ -10,6 +10,96 @@
   const lightbox = document.getElementById("lightbox");
   const config = window.CLUB_CONFIG || {};
 
+  const MONTHS_UK = [
+    "січня",
+    "лютого",
+    "березня",
+    "квітня",
+    "травня",
+    "червня",
+    "липня",
+    "серпня",
+    "вересня",
+    "жовтня",
+    "листопада",
+    "грудня",
+  ];
+
+  const parseLocalDate = (value) => {
+    if (!value || typeof value !== "string") return null;
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value.trim());
+    if (!match) return null;
+    const year = Number(match[1]);
+    const month = Number(match[2]) - 1;
+    const day = Number(match[3]);
+    const date = new Date(year, month, day);
+    if (
+      date.getFullYear() !== year ||
+      date.getMonth() !== month ||
+      date.getDate() !== day
+    ) {
+      return null;
+    }
+    return date;
+  };
+
+  const startOfDay = (date) =>
+    new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+  const formatUkDayMonth = (date) =>
+    `${date.getDate()} ${MONTHS_UK[date.getMonth()]}`;
+
+  // Показує дату старту, поки не минув місяць після неї.
+  // Якщо дати немає або місяць уже минув — «Вже скоро!».
+  const resolveStartLabel = (startDateValue, comingSoonLabel, now = new Date()) => {
+    const soon = comingSoonLabel || "Вже скоро!";
+    const start = parseLocalDate(startDateValue);
+    if (!start) return { label: soon, isComingSoon: true, dateText: null };
+
+    const expires = new Date(start);
+    expires.setMonth(expires.getMonth() + 1);
+    const dateText = formatUkDayMonth(start);
+
+    if (startOfDay(now) >= startOfDay(expires)) {
+      return { label: soon, isComingSoon: true, dateText };
+    }
+    return { label: `Старт ${dateText}`, isComingSoon: false, dateText };
+  };
+
+  const { label: startLabel, isComingSoon, dateText } = resolveStartLabel(
+    config.startDate,
+    config.comingSoonLabel
+  );
+
+  document.querySelectorAll("[data-start-label]").forEach((node) => {
+    node.textContent = startLabel;
+  });
+
+  const titleBase = "Вечірній клуб тейпування";
+  document.title = isComingSoon
+    ? `${titleBase} — ${startLabel}`
+    : `${titleBase} — старт ${dateText}`;
+
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) {
+    metaDescription.setAttribute(
+      "content",
+      isComingSoon
+        ? "30 днів разом, щоб навчитися працювати з обличчям комплексно — від дренажу та розслаблення до ліфтингових технік. Новий потік — вже скоро!"
+        : `30 днів разом, щоб навчитися працювати з обличчям комплексно — від дренажу та розслаблення до ліфтингових технік. Новий потік стартує ${dateText}.`
+    );
+  }
+
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  if (ogDescription) {
+    ogDescription.setAttribute(
+      "content",
+      isComingSoon
+        ? "30 днів участі + 15 днів доступу. Новий потік — вже скоро!"
+        : `30 днів участі + 15 днів доступу. Старт нового потоку — ${dateText}.`
+    );
+  }
+
   const onScroll = () => {
     header.classList.toggle("is-scrolled", window.scrollY > 12);
   };
@@ -75,10 +165,10 @@
       const info = document.createElement("div");
       info.className = "course-info";
 
-      if (course.badge) {
+      {
         const badge = document.createElement("p");
         badge.className = "badge badge-gift";
-        badge.textContent = course.badge;
+        badge.textContent = course.badge || startLabel;
         info.appendChild(badge);
       }
 
